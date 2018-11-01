@@ -6,4 +6,4 @@ bvsp_rv5 <- oxfordmanrealizedvolatilityindices %>%
   filter( Symbol == ".BVSP" ) %>% 
   select( date, rv5 )
 
-rm(dataset)
+rm(oxfordmanrealizedvolatilityindices)
