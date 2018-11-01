@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1529871801792.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2523290872",
+    "id" : "FCD57B10",
+    "lastKnownWriteTime" : 1541083947,
+    "last_content_update" : 1541083947890,
+    "path" : "/data-science/research/realized_volatility/metodo_har_redes_mcs/config/global.dcf",
+    "project_path" : "config/global.dcf",
+    "properties" : {
+        "cursorPosition" : "6,14",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}
