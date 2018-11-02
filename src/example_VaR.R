@@ -2,6 +2,8 @@
 ################# Exemplo VaR #################
 ###############################################
 
+# http://pedrounb.blogspot.com/2012/08/value-at-risk-var-usando-o-r.html
+
 # Habilita o pacote quantmod
 library(quantmod)
 
@@ -43,7 +45,7 @@ sresi <- (modelo.N.FHS@residuals / modelo.N.FHS@sigma.t)
 
 #Passo2: Obtem-se sigma_t+1 e mu_t+1
 mu.t1 <- predict(fit, n.ahead = 1)$pred[1]
-sigma.t1 <- predict(modelo.N.FHS , n.ahead = 1)[1,1]
+sigma.t1 <- predict(modelo.N.FHS , n.ahead = 1)[1,3]
 
 #Passo3: Para o período t+1 gera-se um conjunto de Retornos
 uniforme <- ceiling( runif(1000)*length(sresi) )
