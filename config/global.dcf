@@ -1,4 +1,4 @@
-version: 0.8
+version: 0.8.2
 data_loading: FALSE
 data_loading_header: FALSE
 data_ignore:
@@ -8,9 +8,9 @@ munging: FALSE
 logging: TRUE
 logging_level: INFO
 load_libraries: TRUE
-libraries: tidyverse, magrittr, lubridate, doFuture, highfrequency, forecast, brnn, afmtools, MCS
+libraries: tidyverse, magrittr, lubridate, doFuture, highfrequency, forecast, brnn, MCS
 as_factors: FALSE
 data_tables: FALSE
 attach_internal_libraries: FALSE
-cache_loaded_data:  FALSE
+cache_loaded_data: FALSE
 sticky_variables: NONE

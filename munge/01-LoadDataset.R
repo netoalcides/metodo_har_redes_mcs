@@ -4,6 +4,6 @@ load("data/oxfordmanrealizedvolatilityindices.RData")
 
 bvsp_rv5 <- oxfordmanrealizedvolatilityindices %>% 
   dplyr::filter( Symbol == ".BVSP" ) %>% 
-  select( date, rv5 )
+  select( date, close_price, rv5 )
 
 rm(oxfordmanrealizedvolatilityindices)
