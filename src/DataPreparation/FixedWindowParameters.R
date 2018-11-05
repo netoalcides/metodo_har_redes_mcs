@@ -1,19 +1,19 @@
 info( logger, "HAR_NEURAL_PROJECT::window methodology parameters" )
 
 info( logger, "HAR_NEURAL_PROJECT::fixed window" )
+sample_size_percentage <- 0.7
 
-## Original HAR
 
-# Har lag structure
+
+info( logger, "HAR_NEURAL_PROJECT::Classic Har lag structure" )
+
 har_original_lag_structure <- c(1, 5, 22)
 
-# Har data structure
 har_original_data_structure <- bvsp_rv5 %>% 
   bind_cols(., har_structure( bvsp_rv5$rv5_252, har_original_lag_structure ) ) %>% 
   na.omit
 
 # Size fixed window parameters
-sample_size_percentage <- 0.7
 T <- dim(har_original_data_structure)[1]
 T_training <- round( T * sample_size_percentage )
 

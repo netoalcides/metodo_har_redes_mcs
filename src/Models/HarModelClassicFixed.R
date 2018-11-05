@@ -3,7 +3,7 @@ info( logger, "HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed w
 # training
 fixed_window_har_original_model <- lm( formula = rv5_252 ~ .,
                                        data =  har_original_data_structure_train %>%
-                                         select( -date, -close_price, -log_return ) )
+                                         select( -date, -close_price, -log_return, -cdi ) )
 
 # # forecasting 1, 5, 10, 15 days ahead
 # registerDoFuture()
@@ -49,26 +49,6 @@ fixed_window_har_original_model <- lm( formula = rv5_252 ~ .,
 # cache("fixed_window.results_forecasts_har_classic_by_horizon")
 # 
 # rm( results_forecasts_har_classic )
-
-
-load(file = "cache/fixed_window.results_forecasts_har_classic_by_horizon.RData")
-
-
-
-
-
-parametric_var <- function( volatility, alpha ) { abs(qnorm( alpha, 0, 1) * volatility) }
-
-
-
-fixed_window.results_forecasts_har_classic_by_horizon %>% 
-  left_join(., bvsp_rv5 %>% select( date, close_price, log_return ),
-            by = 'date' ) %>%
-  bind_cols(., fixed_window.results_forecasts_har_classic_by_horizon %>% 
-              transmute_at( vars( contains('_h') ),
-                            funs( parametric_var(volatility = sqrt(./252), alpha = 0.05) ) ) %>% 
-              rename_all( funs( paste0('var_', .) ) ) )
-
 
 
 

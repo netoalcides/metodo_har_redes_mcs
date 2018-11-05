@@ -1,56 +1,138 @@
-[ 2018-06-23 23:01:22 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-06-23 23:01:22 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-06-23 23:01:22 ] INFO HAR_NEURAL_PROJECT::transform rv 252 days 
-[ 2018-06-24 22:23:20 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-06-24 22:25:40 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-06-24 22:42:29 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-06-24 22:42:30 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-06-24 22:42:30 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-06-24 22:42:30 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-06-24 22:42:30 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-06-24 22:42:30 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model 
-[ 2018-07-02 00:50:27 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-02 00:50:30 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-02 00:50:30 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-02 00:50:30 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-02 00:50:30 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-03 02:26:39 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-03 02:26:42 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-03 02:26:42 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-03 02:26:42 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-03 02:26:42 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-03 02:27:39 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-03 02:27:40 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-03 02:27:40 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-03 02:27:40 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-03 02:27:40 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-03 03:31:32 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-03 03:31:34 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-03 03:31:34 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-03 03:31:34 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-03 03:31:34 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-03 03:31:34 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
-[ 2018-07-08 16:25:06 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-08 16:25:09 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-08 16:25:09 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-08 16:25:09 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-08 16:25:09 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-09 16:12:03 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-09 16:12:06 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-09 16:12:06 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-09 16:12:06 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-09 16:12:06 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-09 19:48:16 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-09 19:48:19 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-09 19:48:19 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-09 19:48:19 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-09 19:48:19 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-09 20:26:10 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-07-09 20:26:13 ] INFO HAR_NEURAL_PROJECT::clean na 
-[ 2018-07-09 20:26:13 ] INFO HAR_NEURAL_PROJECT::adjust rv 252 days 
-[ 2018-07-09 20:26:13 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
-[ 2018-07-09 20:26:13 ] INFO HAR_NEURAL_PROJECT::fixed window 
-[ 2018-07-09 20:26:13 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
-[ 2018-11-02 15:08:25 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-11-02 15:10:16 ] INFO HAR_NEURAL_PROJECT::load_dataset 
-[ 2018-11-02 15:11:38 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 15:58:33 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 15:58:33 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-03 16:01:31 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-03 16:01:46 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 16:01:46 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:01:47 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-03 16:01:47 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 16:01:47 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-03 16:01:47 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-03 16:01:47 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-03 16:03:03 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-03 16:08:53 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-03 16:17:42 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-03 16:17:42 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-03 16:17:43 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 10:47:23 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 10:47:23 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 10:47:24 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 10:47:24 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 10:47:24 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 10:47:24 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 10:47:24 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 10:47:25 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 10:47:25 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 11:27:11 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 11:52:03 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 11:52:06 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 13:19:21 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 13:26:10 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::Option price analysis 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 13:51:31 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 14:10:23 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 14:10:23 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::Option price analysis 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 14:10:24 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 14:12:03 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 14:12:03 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::Option price analysis 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 14:12:04 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::Option price analysis 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 14:13:31 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 15:59:42 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 16:32:27 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 16:32:28 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 16:32:31 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 16:32:31 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 16:32:34 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 16:32:34 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 16:32:34 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 16:33:25 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 16:38:23 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
+[ 2018-11-04 16:41:27 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-04 16:41:27 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::Option price analysis 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-04 16:41:28 ] INFO HAR_NEURAL_PROJECT::Option price simulation analysis fixed window models 
