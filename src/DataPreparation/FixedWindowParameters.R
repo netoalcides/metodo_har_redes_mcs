@@ -25,3 +25,18 @@ har_original_data_structure_valid <- har_original_data_structure %>%
   slice( (T_training+1):T )
 
 
+
+info( logger, "HAR_NEURAL_PROJECT::Har Stepwise lag structure" )
+
+har_stepwise_lag_structure <- c(1:22)
+
+har_stepwise_data_structure <- bvsp_rv5 %>% 
+  bind_cols(., har_structure( bvsp_rv5$rv5_252, har_stepwise_lag_structure ) ) %>% 
+  na.omit
+
+# Train and validation data
+har_stepwise_data_structure_train <- har_stepwise_data_structure %>% 
+  slice( 1:T_training )
+
+har_stepwise_data_structure_valid <- har_stepwise_data_structure %>% 
+  slice( (T_training+1):T )

@@ -15,6 +15,9 @@ source('src/DataPreparation/FixedWindowParameters.R')
 cat( 'HAR_NEURAL_PROJECT::estimating classic har model \n' )
 source('src/Models/HarModelClassicFixed.R')
 
+cat( 'HAR_NEURAL_PROJECT::estimating stepwise har model \n' )
+source('src/Models/HarModelStepwiseFixed.R')
+
 
 cat( 'HAR_NEURAL_PROJECT::var fixed window \n' )
 source('src/Tests/VaR_Analysis.R')

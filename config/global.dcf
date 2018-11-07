@@ -4,7 +4,7 @@ data_loading_header: FALSE
 data_ignore:
 cache_loading: FALSE
 recursive_loading: FALSE
-munging: TRUE
+munging: FALSE
 logging: TRUE
 logging_level: INFO
 load_libraries: TRUE
