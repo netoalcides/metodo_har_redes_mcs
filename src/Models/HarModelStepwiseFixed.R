@@ -22,71 +22,71 @@ fixed_window_har_stepwise_aic <- step(null,
 
 
 
-# info( logger, "HAR_NEURAL_PROJECT::forecasting AIC and BIC models - fixed window" )
-# 
-# results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
-#   foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
-# 
-#     # prepare data to forecasts
-#     data_to_loop <- har_stepwise_data_structure %>%
-#       slice( (T_training - 21):(T_training + ( (rolling_valid_sample-1)*horizons ) + 1 ) ) %>%
-#       select( date, rv5_252 )
-# 
-# 
-#     # loop recursive forecasts
-#     forecasts <- har_forecast( model = fixed_window_har_stepwise_bic,
-#                                x_reg = data_to_loop,
-#                                horizons = horizons,
-#                                har_lag_structure = har_stepwise_lag_structure,
-#                                har_dataset =  har_stepwise_data_structure )
-#     
-#     forecasts %>% 
-#       mutate( pred_horizon = paste0('h_', horizons ) )
-# 
-# }
-# 
-# results_forecasts_har_stepwise_aic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
-#   foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
-#     
-#     # prepare data to forecasts
-#     data_to_loop <- har_stepwise_data_structure %>%
-#       slice( (T_training - 21):(T_training + ( (rolling_valid_sample-1)*horizons ) + 1 ) ) %>%
-#       select( date, rv5_252 )
-#     
-#     
-#     # loop recursive forecasts
-#     forecasts <- har_forecast( model = fixed_window_har_stepwise_aic,
-#                                x_reg = data_to_loop,
-#                                horizons = horizons, 
-#                                har_lag_structure = har_stepwise_lag_structure,
-#                                har_dataset =  har_stepwise_data_structure )
-#     
-#     forecasts %>% 
-#       mutate( pred_horizon = paste0('h_', horizons ) )
-#     
-#   }
-# 
-# 
-# 
-# info( logger, "HAR_NEURAL_PROJECT::adjust results - fixed window" )
-# 
-# fixed_window.results_forecasts_har_stepwise_bic_by_horizon <- bind_rows(results_forecasts_har_stepwise_bic) %>% 
-#   group_by( date, pred_horizon ) %>% 
-#   filter( row_number() <= 1 ) %>%
-#   ungroup() 
-# 
-# fixed_window.results_forecasts_har_stepwise_aic_by_horizon <- bind_rows(results_forecasts_har_stepwise_aic) %>% 
-#   group_by( date, pred_horizon ) %>% 
-#   filter( row_number() <= 1 ) %>%
-#   ungroup() 
-# 
-# 
-# cache("fixed_window.results_forecasts_har_stepwise_bic_by_horizon")
-# 
-# cache("fixed_window.results_forecasts_har_stepwise_aic_by_horizon")
-# 
-# 
-# rm( results_forecasts_har_stepwise_bic, results_forecasts_har_stepwise_aic )
+info( logger, "HAR_NEURAL_PROJECT::forecasting AIC and BIC models - fixed window" )
+
+results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
+  foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
+
+    # prepare data to forecasts
+    data_to_loop <- har_stepwise_data_structure %>%
+      slice( (T_training - 21):(T_training + ( (rolling_valid_sample-1)*horizons ) + 1 ) ) %>%
+      select( date, rv5_252 )
+
+
+    # loop recursive forecasts
+    forecasts <- har_forecast( model = fixed_window_har_stepwise_bic,
+                               x_reg = data_to_loop,
+                               horizons = horizons,
+                               har_lag_structure = har_stepwise_lag_structure,
+                               har_dataset =  har_stepwise_data_structure )
+
+    forecasts %>%
+      mutate( pred_horizon = paste0('h_', horizons ) )
+
+}
+
+results_forecasts_har_stepwise_aic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
+  foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
+
+    # prepare data to forecasts
+    data_to_loop <- har_stepwise_data_structure %>%
+      slice( (T_training - 21):(T_training + ( (rolling_valid_sample-1)*horizons ) + 1 ) ) %>%
+      select( date, rv5_252 )
+
+
+    # loop recursive forecasts
+    forecasts <- har_forecast( model = fixed_window_har_stepwise_aic,
+                               x_reg = data_to_loop,
+                               horizons = horizons,
+                               har_lag_structure = har_stepwise_lag_structure,
+                               har_dataset =  har_stepwise_data_structure )
+
+    forecasts %>%
+      mutate( pred_horizon = paste0('h_', horizons ) )
+
+  }
+
+
+
+info( logger, "HAR_NEURAL_PROJECT::adjust results - fixed window" )
+
+results_forecasts_har_stepwise_bic_by_horizon.fixed_window <- bind_rows(results_forecasts_har_stepwise_bic) %>%
+  group_by( date, pred_horizon ) %>%
+  filter( row_number() <= 1 ) %>%
+  ungroup()
+
+results_forecasts_har_stepwise_aic_by_horizon.fixed_window <- bind_rows(results_forecasts_har_stepwise_aic) %>%
+  group_by( date, pred_horizon ) %>%
+  filter( row_number() <= 1 ) %>%
+  ungroup()
+
+
+cache("results_forecasts_har_stepwise_bic_by_horizon.fixed_window")
+
+cache("results_forecasts_har_stepwise_aic_by_horizon.fixed_window")
+
+
+rm( results_forecasts_har_stepwise_bic, results_forecasts_har_stepwise_aic )
 
 
 
