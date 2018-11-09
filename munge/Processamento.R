@@ -1,5 +1,8 @@
 info( logger, "HAR_NEURAL_PROJECT::Processamento" )
 
+registerDoFuture()
+plan(multiprocess)
+
 cat( 'HAR_NEURAL_PROJECT::loading data \n' )
 source('src/DataPreparation/LoadDataset.R')
 

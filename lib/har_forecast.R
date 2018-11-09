@@ -1,4 +1,4 @@
-har_classic_forecast <- function(model, x_reg, horizons ){
+har_forecast <- function(model, x_reg, har_lag_structure, har_dataset, horizons ){
   
   forecasts <- NULL
   pred <- NULL
@@ -6,7 +6,7 @@ har_classic_forecast <- function(model, x_reg, horizons ){
   for( h in 1:horizons){
     
     new_data <- x_reg %>%
-      bind_cols(., har_structure( x_reg$rv5_252, har_original_lag_structure ) ) %>%
+      bind_cols(., har_structure( x_reg$rv5_252, har_lag_structure ) ) %>%
       na.omit
     
     pred <- predict( model, new_data %>% last )
@@ -23,7 +23,7 @@ har_classic_forecast <- function(model, x_reg, horizons ){
     forecasts %<>%
       bind_rows(., forec)
     
-    new_x <- har_original_data_structure %>%
+    new_x <- har_dataset %>%
       filter( date > last(x_reg$date) ) %>%
       slice(1) %>%
       select( date, rv5_252 )
