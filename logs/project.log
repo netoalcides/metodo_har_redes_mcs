@@ -199,3 +199,12 @@
 [ 2018-11-09 13:15:46 ] INFO HAR_NEURAL_PROJECT::train AIC and BIC models - fixed window 
 [ 2018-11-09 13:15:47 ] INFO HAR_NEURAL_PROJECT::forecasting AIC and BIC models - fixed window 
 [ 2018-11-09 13:22:16 ] INFO HAR_NEURAL_PROJECT::adjust results - fixed window 
+[ 2018-11-10 13:38:45 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-10 13:38:46 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-10 13:39:05 ] INFO HAR_NEURAL_PROJECT::train Har classic - fixed window 
+[ 2018-11-10 13:39:11 ] INFO HAR_NEURAL_PROJECT::train AIC and BIC models - fixed window 

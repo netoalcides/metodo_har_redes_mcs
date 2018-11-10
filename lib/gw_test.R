@@ -39,7 +39,7 @@ gw.test <-
       if (alternative == "two.sided") PVAL <- 2 * pnorm(-abs(STATISTIC))
       else if (alternative == "less") PVAL <- round(pnorm(STATISTIC),4)
       else if (alternative == "greater") PVAL <- round(pnorm(STATISTIC, lower.tail = FALSE),4)     
-      names(STATISTIC) <- "Normal Standad"
+      names(STATISTIC) <- "Normal Standard"
       METHOD <- "Standard Statistic Simple Regression Estimator" 
     }
     
@@ -68,5 +68,5 @@ gw.test <-
       else if (alternative == "greater") PVAL <- pnorm(STATISTIC, lower.tail = FALSE)     
       names(STATISTIC) <- "Normal Standar"
     }
-    structure(list(statistic = STATISTIC, alternative = alternative,p.value = PVAL, method = METHOD, data.name = DNAME))
+    structure(list(statistic = STATISTIC, alternative = alternative, p.value = PVAL, method = METHOD, data.name = DNAME))
   }
