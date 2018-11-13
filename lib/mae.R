@@ -1,0 +1,1 @@
+mae <- function( pred, real ){ mean( abs(pred - real) ) }

@@ -1,0 +1,1 @@
+rmse <- function( pred, real ){ sqrt( mean( (pred - real)^2 ) ) }

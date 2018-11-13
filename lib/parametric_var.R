@@ -1,1 +1,1 @@
-parametric_var <- function( volatility, alpha ) { abs(qnorm( alpha, 0, 1) * volatility) }
+parametric_var <- function( volatility, alpha ) { abs(qnorm( alpha/2, 0, 1) * volatility) }

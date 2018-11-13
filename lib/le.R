@@ -1,0 +1,1 @@
+le <- function( pred, real ){ mean( log(real/pred)^2 ) }

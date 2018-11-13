@@ -1,0 +1,1 @@
+haae <- function( pred, real ){ mean( 1 - (real/pred) ) }

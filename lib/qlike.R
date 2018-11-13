@@ -1,0 +1,1 @@
+qlike <- function( pred, real ){ mean( log(pred) + (real/pred) ) }

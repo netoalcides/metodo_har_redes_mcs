@@ -20,10 +20,27 @@ source('src/DataPreparation/FixedWindowParameters.R')
 # 
 # cat( 'HAR_NEURAL_PROJECT::estimating stepwise har model \n' )
 # source('src/Models/HarModelStepwiseFixed.R')
-# 
-# 
-# cat( 'HAR_NEURAL_PROJECT::var fixed window \n' )
-# source('src/Tests/VaR_Analysis.R')
-# 
+
+
+cat( 'HAR_NEURAL_PROJECT::loss functions evaluation \n' )
+source( 'src/Tests/Forecast_Evaluation_Loss_Functions.R')
+
+
+cat( 'HAR_NEURAL_PROJECT::mz regressions \n' )
+source( 'src/Tests/Forecast_Evaluation_MZ_Regressions.R')
+
+
+cat( 'HAR_NEURAL_PROJECT::diebold-mariano tests \n' )
+source( 'src/Tests/Forecast_Evaluation_DM_Tests.R')
+
+
+cat( 'HAR_NEURAL_PROJECT::giacomini-white tests \n' )
+source( 'src/Tests/Forecast_Evaluation_GW_Tests.R')
+
+
+cat( 'HAR_NEURAL_PROJECT::var fixed window \n' )
+source('src/Tests/VaR_Analysis.R')
+
+
 # cat( 'HAR_NEURAL_PROJECT::options fixed window \n' )
 # source('src/Tests/Options_Trading_Analysis_HarModelClassicFixed.R')

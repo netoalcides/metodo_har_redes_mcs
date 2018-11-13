@@ -15,7 +15,7 @@ models_var <- bind_rows( results_forecasts_har_classic_by_horizon.fixed_window %
                                    mutate( model = paste0('har_stepwise_bic') )
 )
 
-alpha_ = 0.01
+alpha_ = 0.1
 
 models_var %<>% 
   mutate( prediction = ifelse( prediction < 0, 0, prediction ),
@@ -48,5 +48,6 @@ var_test_results <- foreach( horizons = horizons_test$pred_horizon, .combine = r
                 lr_cc = paste0( round(var_test$cc.LRstat, 3), "(", round(var_test$cc.LRp, 3), ")" ))
 }
 
+var_test_results
 
 
