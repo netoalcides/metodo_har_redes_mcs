@@ -1,0 +1,1 @@
+omega_ratio <- function( return, mar){ sum( ifelse( return >= mar, return - mar, 0) ) / sum( ifelse( return < mar, mar - return, 0) )  }

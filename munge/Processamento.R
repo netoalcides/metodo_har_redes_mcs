@@ -21,6 +21,8 @@ source('src/DataPreparation/FixedWindowParameters.R')
 # cat( 'HAR_NEURAL_PROJECT::estimating stepwise har model \n' )
 # source('src/Models/HarModelStepwiseFixed.R')
 
+cat( 'HAR_NEURAL_PROJECT::prepare data for evaluation analysis \n' )
+source( 'src/DataPreparation/EvaluationTestsData.R')
 
 cat( 'HAR_NEURAL_PROJECT::loss functions evaluation \n' )
 source( 'src/Tests/Forecast_Evaluation_Loss_Functions.R')
@@ -42,5 +44,5 @@ cat( 'HAR_NEURAL_PROJECT::var fixed window \n' )
 source('src/Tests/VaR_Analysis.R')
 
 
-# cat( 'HAR_NEURAL_PROJECT::options fixed window \n' )
-# source('src/Tests/Options_Trading_Analysis_HarModelClassicFixed.R')
+cat( 'HAR_NEURAL_PROJECT::options fixed window \n' )
+source('src/Tests/Options_Trading_Analysis.R')

@@ -1,29 +1,5 @@
 info( logger, "HAR_NEURAL_PROJECT::Diebold Mariano analysis" )
 
-# carrega dados
-list.files( "./cache", pattern = 'fixed_window.RData', full.names = TRUE ) %>% 
-  lapply(., load, .GlobalEnv )
-
-
-# dados
-models_predictions <- bind_rows( results_forecasts_har_classic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_classic') ),
-                                 results_forecasts_har_stepwise_aic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_stepwise_aic') ),
-                                 results_forecasts_har_stepwise_bic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_stepwise_bic') )
-)
-
-
-
-horizons_test <- models_predictions %>% 
-  distinct( pred_horizon )
-
-models_test <- models_predictions %>% 
-  distinct( model )
-
-
-# tests
 compare_models <- combn( x = models_test$model, m = 2 )
 
 diebold_mariano_tests <- foreach( horizons = horizons_test$pred_horizon, .combine = rbind ) %:% 

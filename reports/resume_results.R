@@ -9,3 +9,5 @@ diebold_mariano_tests
 giacomini_white_tests
 
 var_test_results
+
+straddle_strategy_results

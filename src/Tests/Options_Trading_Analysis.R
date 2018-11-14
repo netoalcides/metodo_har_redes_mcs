@@ -1,23 +1,4 @@
-list.files( "./cache", pattern = 'fixed_window.RData', full.names = TRUE ) %>% 
-  lapply(., load, .GlobalEnv )
-
-
-
-# dados
-models_predictions <- bind_rows( results_forecasts_har_classic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_classic') ),
-                                 results_forecasts_har_stepwise_aic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_stepwise_aic') ),
-                                 results_forecasts_har_stepwise_bic_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('har_stepwise_bic') )
-)
-
-horizons_test <- models_predictions %>% 
-  distinct( pred_horizon )
-
-models_test <- models_predictions %>% 
-  distinct( model )
-
+info( logger, "HAR_NEURAL_PROJECT::options trading simulation analysis" )
 
 info( logger, "HAR_NEURAL_PROJECT::define simulation parameters" )
 
@@ -28,6 +9,7 @@ trading_costs = 0.025
 # trading_costs_sequence = seq( from = 0, to = 0.025, by = 0.0025 )
 
 
+
 info( logger, "HAR_NEURAL_PROJECT::option price simulation" )
 
 options_price <- foreach( horizons = horizons_test$pred_horizon, .combine = rbind ) %:% 
@@ -36,7 +18,7 @@ options_price <- foreach( horizons = horizons_test$pred_horizon, .combine = rbin
     models_predictions %>% 
       filter( pred_horizon == horizons,
               model == models ) %>% 
-      left_join(., bvsp_rv5 %>% select( date, close_price, cdi ),
+      left_join(., bvsp_rv5 %>% select( date, close_price, log_return, cdi ),
                 by = 'date' ) %>% 
       mutate( op_call = bs_call( S = close_price, K = lag(close_price), rf = cdi, h = t_maturity, sigma2 = rv5_252 ),
               op_put = bs_put( S = close_price, K = lag(close_price), rf = cdi, h = t_maturity, sigma2 = rv5_252 ) )
@@ -44,8 +26,10 @@ options_price <- foreach( horizons = horizons_test$pred_horizon, .combine = rbin
   }
 
 
-mean_rv <- mean(har_original_data_structure_train$rv5_252) # helps threshould calculus
 
+info( logger, "HAR_NEURAL_PROJECT::straddle strategy applied" )
+
+mean_rv <- mean(har_original_data_structure_train$rv5_252) # helps threshould calculus
 
 straddle_returns <- foreach( horizons = horizons_test$pred_horizon, .combine = rbind ) %:% 
   foreach( models = models_test$model, .combine = rbind ) %dopar% {
@@ -55,7 +39,7 @@ straddle_returns <- foreach( horizons = horizons_test$pred_horizon, .combine = r
               model == models ) %>% 
       mutate( variation = (prediction - lag(rv5_252)) / mean_rv,
               strategy = straddle_strategy_applied( variation_expected = variation, threshould = tau ),
-              returns = straddle_strategy_returns( rf = cdi,
+              returns_options = straddle_strategy_returns( rf = cdi,
                                                    trading_costs = trading_costs,
                                                    strategy = strategy,
                                                    p_call0 = lag(op_call),
@@ -65,25 +49,27 @@ straddle_returns <- foreach( horizons = horizons_test$pred_horizon, .combine = r
     
   }
 
-straddle_returns %>% 
-  na.omit %>% 
+straddle_returns %<>% 
+  na.omit
+  
+
+
+info( logger, "HAR_NEURAL_PROJECT::calculates strategy performance" )
+
+decisions <- straddle_returns %>% 
   group_by( model, pred_horizon ) %>% 
   count( strategy ) %>% 
-  print(n=Inf)
+  spread( key = strategy, value = n ) %>% 
+  ungroup()
 
-downside_risk <- function( x ){ sqrt(mean(pmin( 0, x )^2))}
-
-omega_metric = function( return, mar){ sum( ifelse( return >= mar, return - mar, 0) ) / sum( ifelse( return < mar, mar - return, 0) )  }
-
-straddle_returns %>% 
-  na.omit %>% 
+performance_metrics <- straddle_returns %>% 
   group_by( model, pred_horizon ) %>% 
-  summarise( sharpe_ratio = mean(returns - cdi) / sd(returns),
-             sortino_ratio = mean(returns - cdi) / downside_risk(returns),
-             omega_ratio =  omega_metric( return = returns, mar = cdi ) )
+  summarise( sharpe_ratio = mean(returns_options - cdi) / sd(returns_options),
+             sortino_ratio = mean(returns_options - cdi) / downside_risk(returns_options),
+             omega_ratio =  omega_ratio( return = returns_options, mar = cdi ),
+             alpha_ratio = jensen_alpha( portfolio_return = returns_options, market_return = log_return, rf = cdi) ) %>% 
+  ungroup()
 
-
-
-
-
-
+straddle_strategy_results <- decisions %>% 
+  bind_cols(., performance_metrics %>% 
+              select( -model, -pred_horizon ) )

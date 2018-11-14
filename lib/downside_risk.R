@@ -1,0 +1,1 @@
+downside_risk <- function( x ){ sqrt(mean(pmin( 0, x )^2))}
