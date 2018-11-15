@@ -3,7 +3,8 @@ info( logger, "HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed w
 
 
 info( logger, "HAR_NEURAL_PROJECT::train Har classic - fixed window" )
-fixed_window_har_original_model <- lm( formula = rv5_252 ~ .,
+
+fixed_window_har_original_model <- lm( formula = log(rv5_252) ~ .,
                                        data =  har_original_data_structure_train %>%
                                          select( -date, -close_price, -log_return, -cdi ) )
 
@@ -25,7 +26,8 @@ results_forecasts_har_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                x_reg = data_to_loop,
                                horizons = horizons,
                                har_lag_structure = har_original_lag_structure,
-                               har_dataset =  har_original_data_structure )
+                               har_dataset =  har_original_data_structure, 
+                               model_type =  'log' )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )
@@ -44,6 +46,3 @@ results_forecasts_har_classic_by_horizon.fixed_window <- bind_rows(results_forec
 cache("results_forecasts_har_classic_by_horizon.fixed_window")
 
 rm( results_forecasts_har_classic )
-
-
-

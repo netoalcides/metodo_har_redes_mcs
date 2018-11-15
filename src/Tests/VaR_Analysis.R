@@ -2,7 +2,7 @@ info( logger, "HAR_NEURAL_PROJECT::VaR analysis" )
 
 info( logger, "HAR_NEURAL_PROJECT::VaR analysis fixed window models" )
 
-alpha_ = 0.1
+alpha_ = 0.05
 
 models_var <- models_predictions %>% 
   mutate( prediction = ifelse( prediction < 0, 0, prediction ),
@@ -27,7 +27,3 @@ var_test_results <- foreach( horizons = horizons_test$pred_horizon, .combine = r
                 lr_uc = paste0( round(var_test$uc.LRstat, 3), "(", round(var_test$uc.LRp, 3), ")" ),
                 lr_cc = paste0( round(var_test$cc.LRstat, 3), "(", round(var_test$cc.LRp, 3), ")" ))
 }
-
-var_test_results
-
-

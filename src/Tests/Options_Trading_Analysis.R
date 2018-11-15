@@ -3,8 +3,8 @@ info( logger, "HAR_NEURAL_PROJECT::options trading simulation analysis" )
 info( logger, "HAR_NEURAL_PROJECT::define simulation parameters" )
 
 t_maturity = 22 - 1
-tau = 0.1 # threshould
-trading_costs = 0.025
+tau = 0.05 # threshould
+trading_costs = 0.0100
 # tau_sequence = seq( from = 0, to = 0.5, by = 0.05 )
 # trading_costs_sequence = seq( from = 0, to = 0.025, by = 0.0025 )
 

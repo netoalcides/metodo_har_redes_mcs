@@ -2,8 +2,8 @@ info( logger, "HAR_NEURAL_PROJECT::train and predict stepwise HAR model - fixed 
 
 info( logger, "HAR_NEURAL_PROJECT::train AIC and BIC models - fixed window" )
 # setting up inital models
-null <- lm( rv5_252 ~ 1, data = har_stepwise_data_structure_train )
-full <- lm( rv5_252 ~ ., data = har_stepwise_data_structure_train %>%
+null <- lm( log(rv5_252) ~ 1, data = har_stepwise_data_structure_train )
+full <- lm( log(rv5_252) ~ ., data = har_stepwise_data_structure_train %>%
               select( -date, -close_price, -log_return, -cdi ) )
 
 # training BIC method
@@ -38,7 +38,8 @@ results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                x_reg = data_to_loop,
                                horizons = horizons,
                                har_lag_structure = har_stepwise_lag_structure,
-                               har_dataset =  har_stepwise_data_structure )
+                               har_dataset =  har_stepwise_data_structure, 
+                               model_type = 'log' )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )
@@ -59,7 +60,8 @@ results_forecasts_har_stepwise_aic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                x_reg = data_to_loop,
                                horizons = horizons,
                                har_lag_structure = har_stepwise_lag_structure,
-                               har_dataset =  har_stepwise_data_structure )
+                               har_dataset =  har_stepwise_data_structure, 
+                               model_type = 'log' )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )
@@ -79,7 +81,6 @@ results_forecasts_har_stepwise_aic_by_horizon.fixed_window <- bind_rows(results_
   group_by( date, pred_horizon ) %>%
   filter( row_number() <= 1 ) %>%
   ungroup()
-
 
 cache("results_forecasts_har_stepwise_bic_by_horizon.fixed_window")
 

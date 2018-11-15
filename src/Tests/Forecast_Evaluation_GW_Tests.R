@@ -22,7 +22,7 @@ giacomini_white_tests <- foreach( horizons = horizons_test$pred_horizon, .combin
                                 p = f_1$rv5_252, 
                                 T = length(f_1$rv5_252),
                                 tau = h_, 
-                                method = "HAC", 
+                                method = "NeweyWest", 
                                 alternative = "two.sided")
     
     data_frame( model_1 = compare_models[1, compare],
