@@ -2,11 +2,11 @@ info( logger, "HAR_NEURAL_PROJECT::options trading simulation analysis" )
 
 info( logger, "HAR_NEURAL_PROJECT::define simulation parameters" )
 
-t_maturity = 22 - 1
-tau = 0.05 # threshould
-trading_costs = 0.0100
-# tau_sequence = seq( from = 0, to = 0.5, by = 0.05 )
-# trading_costs_sequence = seq( from = 0, to = 0.025, by = 0.0025 )
+# t_maturity = 22 - 1
+# tau = 0.05 # threshould
+# trading_costs = 0.0100
+# # tau_sequence = seq( from = 0, to = 0.5, by = 0.05 )
+# # trading_costs_sequence = seq( from = 0, to = 0.025, by = 0.0025 )
 
 
 
@@ -18,7 +18,7 @@ options_price <- foreach( horizons = horizons_test$pred_horizon, .combine = rbin
     models_predictions %>% 
       filter( pred_horizon == horizons,
               model == models ) %>% 
-      left_join(., bvsp_rv5 %>% select( date, close_price, log_return, cdi ),
+      left_join(., bvsp_rv5 %>% select( date, close_price, simple_return, cdi ),
                 by = 'date' ) %>% 
       mutate( op_call = bs_call( S = close_price, K = lag(close_price), rf = cdi, h = t_maturity, sigma2 = rv5_252 ),
               op_put = bs_put( S = close_price, K = lag(close_price), rf = cdi, h = t_maturity, sigma2 = rv5_252 ) )
@@ -67,7 +67,7 @@ performance_metrics <- straddle_returns %>%
   summarise( sharpe_ratio = mean(returns_options - cdi) / sd(returns_options),
              sortino_ratio = mean(returns_options - cdi) / downside_risk(returns_options),
              omega_ratio =  omega_ratio( return = returns_options, mar = cdi ),
-             alpha_ratio = jensen_alpha( portfolio_return = returns_options, market_return = log_return, rf = cdi) ) %>% 
+             alpha_ratio = jensen_alpha( portfolio_return = returns_options, market_return = simple_return, rf = cdi) ) %>% 
   ungroup()
 
 straddle_strategy_results <- decisions %>% 

@@ -4,7 +4,7 @@ info( logger, "HAR_NEURAL_PROJECT::train AIC and BIC models - fixed window" )
 # setting up inital models
 null <- lm( log(rv5_252) ~ 1, data = har_stepwise_data_structure_train )
 full <- lm( log(rv5_252) ~ ., data = har_stepwise_data_structure_train %>%
-              select( -date, -close_price, -log_return, -cdi ) )
+              select( -date, -close_price, -simple_return, -cdi ) )
 
 # training BIC method
 fixed_window_har_stepwise_bic <- step(null, 
@@ -25,7 +25,7 @@ fixed_window_har_stepwise_aic <- step(null,
 info( logger, "HAR_NEURAL_PROJECT::forecasting AIC and BIC models - fixed window" )
 
 results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
-  foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
+  foreach( rolling_valid_sample = 1:( ceiling( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
 
     # prepare data to forecasts
     data_to_loop <- har_stepwise_data_structure %>%
@@ -47,7 +47,7 @@ results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
 }
 
 results_forecasts_har_stepwise_aic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
-  foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
+  foreach( rolling_valid_sample = 1:( ceiling( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
 
     # prepare data to forecasts
     data_to_loop <- har_stepwise_data_structure %>%

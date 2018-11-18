@@ -1,7 +1,7 @@
 info( logger, "HAR_NEURAL_PROJECT::window methodology parameters" )
 
 info( logger, "HAR_NEURAL_PROJECT::fixed window" )
-sample_size_percentage <- 0.7
+sample_size_percentage <- sample_percentage
 
 
 

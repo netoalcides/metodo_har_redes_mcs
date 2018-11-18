@@ -15,11 +15,11 @@ cat( 'HAR_NEURAL_PROJECT::window methodology parameters - preparing data for mod
 source('src/DataPreparation/FixedWindowParameters.R')
 
 
-cat( 'HAR_NEURAL_PROJECT::estimating classic har model \n' )
-source('src/Models/HarModelClassicFixed.R')
-
-cat( 'HAR_NEURAL_PROJECT::estimating stepwise har model \n' )
-source('src/Models/HarModelStepwiseFixed.R')
+# cat( 'HAR_NEURAL_PROJECT::estimating classic har model \n' )
+# source('src/Models/HarModelClassicFixed.R')
+# 
+# cat( 'HAR_NEURAL_PROJECT::estimating stepwise har model \n' )
+# source('src/Models/HarModelStepwiseFixed.R')
 
 cat( 'HAR_NEURAL_PROJECT::prepare data for evaluation analysis \n' )
 source( 'src/DataPreparation/EvaluationTestsData.R')

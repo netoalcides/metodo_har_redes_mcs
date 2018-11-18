@@ -5,16 +5,19 @@ summary(fixed_window_har_stepwise_bic)
 
 summary(fixed_window_har_stepwise_aic)
 
-models_loss  %>% 
-  filter( pred_horizon == 'h_1')
+models_predictions %>% count(model, pred_horizon)
 
-models_mzreg
+models_loss %>% split( .$pred_horizon )
 
-diebold_mariano_tests
+models_mzreg %>% split( .$pred_horizon )
 
-giacomini_white_tests
+diebold_mariano_tests %>% split( .$pred_horizon )
 
-var_test_results
+giacomini_white_tests %>% split( .$pred_horizon )
 
-straddle_strategy_results %>% 
-  filter( pred_horizon == 'h_15')
+var_test_results %>% split( .$pred_horizon )
+
+straddle_strategy_results %>% split( .$pred_horizon )
+
+
+

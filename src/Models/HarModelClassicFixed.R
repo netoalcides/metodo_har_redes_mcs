@@ -6,14 +6,14 @@ info( logger, "HAR_NEURAL_PROJECT::train Har classic - fixed window" )
 
 fixed_window_har_original_model <- lm( formula = log(rv5_252) ~ .,
                                        data =  har_original_data_structure_train %>%
-                                         select( -date, -close_price, -log_return, -cdi ) )
+                                         select( -date, -close_price, -simple_return, -cdi ) )
 
 
 
 info( logger, "HAR_NEURAL_PROJECT::forecasting Har classic - fixed window" )
 
 results_forecasts_har_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
-  foreach( rolling_valid_sample = 1:( round( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
+  foreach( rolling_valid_sample = 1:( ceiling( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
 
     # prepare data to forecasts
     data_to_loop <- har_original_data_structure %>%
