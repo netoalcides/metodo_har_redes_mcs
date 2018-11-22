@@ -1,0 +1,1 @@
+denormalize <- function(z, m, s){ m + z*s }
