@@ -121,7 +121,10 @@ results_forecasts_nnhar_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd08f989ca810686f3e227554f6995854023f06a
 function(model, x_reg, har_lag_structure, har_dataset, horizons, model_type = c('level', 'sqrt', 'log') ){
   
   forecasts <- NULL
