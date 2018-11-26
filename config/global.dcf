@@ -4,11 +4,11 @@ data_loading_header: FALSE
 data_ignore:
 cache_loading: FALSE
 recursive_loading: FALSE
-munging: TRUE
+munging: FALSE
 logging: TRUE
 logging_level: INFO
 load_libraries: TRUE
-libraries: tidyverse, magrittr, lubridate, doFuture, highfrequency, forecast, brnn, MCS, sandwich, car, rugarch
+libraries: tidyverse, magrittr, lubridate, doFuture, highfrequency, forecast, nnet, brnn, MCS, sandwich, car, rugarch
 as_factors: FALSE
 data_tables: FALSE
 attach_internal_libraries: FALSE

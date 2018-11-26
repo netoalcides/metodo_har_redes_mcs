@@ -549,3 +549,23 @@
 [ 2018-11-17 19:30:56 ] INFO HAR_NEURAL_PROJECT::option price simulation 
 [ 2018-11-17 19:30:56 ] INFO HAR_NEURAL_PROJECT::straddle strategy applied 
 [ 2018-11-17 19:30:57 ] INFO HAR_NEURAL_PROJECT::calculates strategy performance 
+[ 2018-11-20 08:50:57 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-20 08:50:57 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-20 08:50:58 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-20 08:50:58 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-20 08:50:58 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-20 08:50:58 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-20 08:50:58 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-20 08:50:59 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-20 18:40:02 ] INFO HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed window 
+[ 2018-11-20 18:40:02 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-11-20 18:40:12 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-11-21 21:22:41 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-21 21:22:42 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-21 21:22:43 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-21 21:44:43 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
