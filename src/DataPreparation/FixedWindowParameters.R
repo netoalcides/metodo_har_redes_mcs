@@ -40,3 +40,28 @@ har_stepwise_data_structure_train <- har_stepwise_data_structure %>%
 
 har_stepwise_data_structure_valid <- har_stepwise_data_structure %>% 
   slice( (T_training+1):T )
+
+
+
+info( logger, "HAR_NEURAL_PROJECT::NNHar parameters" )
+
+# normalization parameters
+sample_mean = mean( log(har_original_data_structure$rv5_252) )
+sample_std_dev = sd( log(har_original_data_structure$rv5_252) )
+
+# sample parameters
+sample_size_percentage_neuralnet = 0.8125
+T_training_neuralnet <- round( T_training * sample_size_percentage_neuralnet )
+
+# tunning parameters
+set.seed(12345)
+number_tunning_run = 150
+size_ = sample( 3:10, number_tunning_run, replace = TRUE) 
+decay_ = runif(min = 0, max = 0.001, n = number_tunning_run)
+maxit_ = sample( 150:500, number_tunning_run, replace = TRUE )
+abstol_ = runif(min = 0.00001, max = 0.0009, n = number_tunning_run)
+reltol_ = runif(min = 0.000000001, max = 0.00000009, n = number_tunning_run)
+
+
+
+

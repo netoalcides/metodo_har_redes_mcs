@@ -39,7 +39,8 @@ results_forecasts_har_stepwise_bic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                horizons = horizons,
                                har_lag_structure = har_stepwise_lag_structure,
                                har_dataset =  har_stepwise_data_structure, 
-                               model_type = 'log' )
+                               model_type = 'log',
+                               normalize = FALSE )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )
@@ -61,7 +62,8 @@ results_forecasts_har_stepwise_aic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                horizons = horizons,
                                har_lag_structure = har_stepwise_lag_structure,
                                har_dataset =  har_stepwise_data_structure, 
-                               model_type = 'log' )
+                               model_type = 'log',
+                               normalize = FALSE )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )

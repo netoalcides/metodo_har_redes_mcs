@@ -4,14 +4,20 @@ info( logger, "HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed
 
 info( logger, "HAR_NEURAL_PROJECT::normalize data - fixed window" )
 
-neural_data_train <- har_original_data_structure_train %>% 
+sample_mean = mean( log(har_stepwise_data_structure_train$rv5_252) )
+sample_std_dev = sd( log(har_stepwise_data_structure_train$rv5_252) )
+
+sample_size_percentage_neuralnet = 0.8125
+T_training_neuralnet <- round( T_training * sample_size_percentage_neuralnet )
+
+neural_data_train <- har_stepwise_data_structure_train %>% 
   mutate( log_rv252 = log(rv5_252) ) %>% 
   transmute_at( vars( contains('log_') ), 
                 funs( normalization( x = ., use_sample_parameters = 'no', 
                                      m = sample_mean, s = sample_std_dev) ) ) %>% 
   slice( 1:T_training_neuralnet )
 
-neural_data_test <- har_original_data_structure_train %>% 
+neural_data_test <- har_stepwise_data_structure_train %>% 
   mutate( log_rv252 = log(rv5_252) ) %>% 
   transmute_at( vars( contains('log_') ), 
                 funs( normalization( x = ., use_sample_parameters = 'no', 
@@ -21,6 +27,16 @@ neural_data_test <- har_original_data_structure_train %>%
 
 
 info( logger, "HAR_NEURAL_PROJECT::set tunning parameters - fixed window" )
+
+set.seed(12345)
+
+number_tunning_run = 150
+size_ = sample( 3:10, number_tunning_run, replace = TRUE) 
+decay_ = runif(min = 0, max = 0.001, n = number_tunning_run)
+maxit_ = sample( 150:500, number_tunning_run, replace = TRUE )
+abstol_ = runif(min = 0.00001, max = 0.0009, n = number_tunning_run)
+reltol_ = runif(min = 0.000000001, max = 0.00000009, n = number_tunning_run)
+
 
 model_tunning <- foreach( running = 1:number_tunning_run, .combine = rbind ) %dopar% {
   
@@ -69,7 +85,7 @@ best <- model_tunning %>%
 
 info( logger, "HAR_NEURAL_PROJECT::train best model - fixed window" )
 set.seed(12345)
-fixed_window_nnhar_original_model <- nnet( log_rv252~., 
+fixed_window_nnhar_stepwise_model <- nnet( log_rv252~., 
                data = neural_data_train, 
                linout = TRUE,
                trace = F,
@@ -83,21 +99,21 @@ fixed_window_nnhar_original_model <- nnet( log_rv252~.,
 
 info( logger, "HAR_NEURAL_PROJECT::forecasting NNHar classic - fixed window" )
 
-results_forecasts_nnhar_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
+results_forecasts_nnhar_stepwise <- foreach( horizons = c(1, 5, 10, 15) ) %:%
   foreach( rolling_valid_sample = 1:( ceiling( (T-T_training)/horizons) ), .combine='rbind' ) %dopar% {
     
     # prepare data to forecasts
-    data_to_loop <- har_original_data_structure %>%
+    data_to_loop <- har_stepwise_data_structure %>%
       slice( (T_training - 21):(T_training + ( (rolling_valid_sample-1)*horizons ) + 1 ) ) %>%
       select( date, rv5_252 )
     
     
     # loop recursive forecasts
-    forecasts <- har_forecast( model = fixed_window_nnhar_original_model,
+    forecasts <- har_forecast( model = fixed_window_nnhar_stepwise_model,
                                x_reg = data_to_loop,
                                horizons = horizons,
-                               har_lag_structure = har_original_lag_structure,
-                               har_dataset =  har_original_data_structure, 
+                               har_lag_structure = har_stepwise_lag_structure,
+                               har_dataset =  har_stepwise_data_structure, 
                                model_type =  'log', 
                                normalize =  TRUE )
     
@@ -109,16 +125,14 @@ results_forecasts_nnhar_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
 
 info( logger, "HAR_NEURAL_PROJECT::adjust results - fixed window" )
 
-results_forecasts_nnhar_classic_by_horizon.fixed_window <- bind_rows(results_forecasts_nnhar_classic) %>%
+results_forecasts_nnhar_stepwise_by_horizon.fixed_window <- bind_rows(results_forecasts_nnhar_stepwise) %>%
   group_by( date, pred_horizon ) %>%
   filter( row_number() <= 1 ) %>%
   ungroup()
 
-cache("results_forecasts_nnhar_classic_by_horizon.fixed_window")
+cache("results_forecasts_nnhar_stepwise_by_horizon.fixed_window")
 
-rm( neural_data_train, neural_data_test, model_tunning, best, results_forecasts_nnhar_classic )
-
-
+rm( neural_data_train, neural_data_test, model_tunning, best, results_forecasts_nnhar_stepwise )
 
 
 

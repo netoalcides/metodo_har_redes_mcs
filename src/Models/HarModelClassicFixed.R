@@ -27,7 +27,8 @@ results_forecasts_har_classic <- foreach( horizons = c(1, 5, 10, 15) ) %:%
                                horizons = horizons,
                                har_lag_structure = har_original_lag_structure,
                                har_dataset =  har_original_data_structure, 
-                               model_type =  'log' )
+                               model_type =  'log', 
+                               normalize = FALSE )
 
     forecasts %>%
       mutate( pred_horizon = paste0('h_', horizons ) )
@@ -46,3 +47,5 @@ results_forecasts_har_classic_by_horizon.fixed_window <- bind_rows(results_forec
 cache("results_forecasts_har_classic_by_horizon.fixed_window")
 
 rm( results_forecasts_har_classic )
+
+
