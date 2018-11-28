@@ -669,3 +669,58 @@
 [ 2018-11-26 15:27:03 ] INFO HAR_NEURAL_PROJECT::straddle strategy applied 
 [ 2018-11-26 15:27:03 ] INFO HAR_NEURAL_PROJECT::calculates strategy performance 
 [ 2018-11-26 15:51:58 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-11-27 10:43:18 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-27 10:43:19 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-27 10:43:20 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-11-27 10:43:35 ] INFO HAR_NEURAL_PROJECT::data preparation for tests 
+[ 2018-11-27 10:43:35 ] INFO HAR_NEURAL_PROJECT::Loss functions analysis 
+[ 2018-11-27 10:43:35 ] INFO HAR_NEURAL_PROJECT::Mincer Zarnowitz regressions analysis 
+[ 2018-11-27 10:43:37 ] INFO HAR_NEURAL_PROJECT::Diebold Mariano analysis 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::Giacomini White analysis 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::options trading simulation analysis 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-27 10:43:38 ] INFO HAR_NEURAL_PROJECT::option price simulation 
+[ 2018-11-27 10:43:39 ] INFO HAR_NEURAL_PROJECT::straddle strategy applied 
+[ 2018-11-27 10:43:39 ] INFO HAR_NEURAL_PROJECT::calculates strategy performance 
+[ 2018-11-27 11:33:16 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-27 11:33:16 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-27 11:33:17 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-11-27 13:47:02 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-27 13:47:02 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-27 13:47:02 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-27 14:03:42 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-11-27 14:07:12 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-11-27 20:42:02 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-11-27 20:42:02 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-11-27 20:42:03 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-11-27 20:42:44 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-11-27 21:34:08 ] INFO HAR_NEURAL_PROJECT::Loss functions analysis 
+[ 2018-11-27 21:34:10 ] INFO HAR_NEURAL_PROJECT::Mincer Zarnowitz regressions analysis 
+[ 2018-11-27 21:34:12 ] INFO HAR_NEURAL_PROJECT::Diebold Mariano analysis 
+[ 2018-11-27 21:34:13 ] INFO HAR_NEURAL_PROJECT::Giacomini White analysis 
+[ 2018-11-27 21:34:15 ] INFO HAR_NEURAL_PROJECT::VaR analysis 
+[ 2018-11-27 21:34:15 ] INFO HAR_NEURAL_PROJECT::VaR analysis fixed window models 
+[ 2018-11-27 21:34:26 ] INFO HAR_NEURAL_PROJECT::options trading simulation analysis 
+[ 2018-11-27 21:34:26 ] INFO HAR_NEURAL_PROJECT::define simulation parameters 
+[ 2018-11-27 21:34:26 ] INFO HAR_NEURAL_PROJECT::option price simulation 
+[ 2018-11-27 21:34:26 ] INFO HAR_NEURAL_PROJECT::straddle strategy applied 
+[ 2018-11-27 21:34:26 ] INFO HAR_NEURAL_PROJECT::calculates strategy performance 

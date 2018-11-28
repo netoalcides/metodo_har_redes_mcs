@@ -14,7 +14,11 @@ models_predictions <- bind_rows( results_forecasts_har_classic_by_horizon.fixed_
                                  results_forecasts_nnhar_classic_by_horizon.fixed_window %>% 
                                    mutate( model = paste0('nnhar_classic') ),
                                  results_forecasts_nnhar_stepwise_by_horizon.fixed_window %>% 
-                                   mutate( model = paste0('nnhar_stepwise') )
+                                   mutate( model = paste0('nnhar_stepwise') ),
+                                 results_forecasts_bnnhar_classic_by_horizon.fixed_window %>% 
+                                   mutate( model = paste0('bnnhar_classic') ),
+                                 results_forecasts_bnnhar_stepwise_by_horizon.fixed_window %>% 
+                                   mutate( model = paste0('bnnhar_stepwise') )
 )
 
 horizons_test <- models_predictions %>% 
