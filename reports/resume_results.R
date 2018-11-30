@@ -30,5 +30,3 @@ var_normal_test_results %>% arrange(viol_ratio) %>% split( .$pred_horizon )
 var_t_test_results %>% arrange(viol_ratio) %>% split( .$pred_horizon )
 
 straddle_strategy_results %>% arrange( desc(sharpe_ratio) ) %>% split( .$pred_horizon )
-
-

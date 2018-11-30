@@ -27,6 +27,12 @@ source('src/Models/NNHarModelClassicFixed.R')
 cat( 'HAR_NEURAL_PROJECT::estimating Neural Network stepwise har model \n' )
 source('src/Models/NNHarModelStepwiseFixed.R')
 
+cat( 'HAR_NEURAL_PROJECT::estimating Bayesian Neural Network classic har model \n' )
+source('src/Models/BNNHarModelClassicFixed.R')
+
+cat( 'HAR_NEURAL_PROJECT::estimating Bayesian Neural Network stepwise har model \n' )
+source('src/Models/BNNHarModelStepwiseFixed.R')
+
 
 # Combinations
 cat( 'HAR_NEURAL_PROJECT::prepare data for evaluation analysis \n' )
