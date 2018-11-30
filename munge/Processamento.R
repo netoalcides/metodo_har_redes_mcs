@@ -28,10 +28,12 @@ cat( 'HAR_NEURAL_PROJECT::estimating Neural Network stepwise har model \n' )
 source('src/Models/NNHarModelStepwiseFixed.R')
 
 
-# Forecast Evaluation
+# Combinations
 cat( 'HAR_NEURAL_PROJECT::prepare data for evaluation analysis \n' )
-source( 'src/DataPreparation/EvaluationTestsData.R')
+source( 'src/Models/CombineAllModels.R')
 
+
+# Forecast Evaluation
 cat( 'HAR_NEURAL_PROJECT::loss functions evaluation \n' )
 source( 'src/Tests/Forecast_Evaluation_Loss_Functions.R')
 

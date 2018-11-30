@@ -19,17 +19,16 @@ models_predictions %>% count(model, pred_horizon)
 
 models_loss %>% arrange( rmse ) %>% split( .$pred_horizon )
 
-models_mzreg %>% split( .$pred_horizon )
+models_mzreg %>% arrange( desc(r2) ) %>% split( .$pred_horizon )
 
-diebold_mariano_tests %>% split( .$pred_horizon ) 
+diebold_mariano_tests %>% arrange( desc(sig) ) %>% split( .$pred_horizon ) 
 
-giacomini_white_tests %>% split( .$pred_horizon )
+giacomini_white_tests %>% arrange( desc(sig) ) %>% split( .$pred_horizon )
 
-var_normal_test_results %>% split( .$pred_horizon )
+var_normal_test_results %>% arrange(viol_ratio) %>% split( .$pred_horizon )
 
-var_t_test_results %>% split( .$pred_horizon )
+var_t_test_results %>% arrange(viol_ratio) %>% split( .$pred_horizon )
 
 straddle_strategy_results %>% arrange( desc(sharpe_ratio) ) %>% split( .$pred_horizon )
-
 
 
