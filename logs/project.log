@@ -804,3 +804,14 @@
 [ 2018-11-30 10:09:10 ] INFO HAR_NEURAL_PROJECT::option price simulation 
 [ 2018-11-30 10:09:17 ] INFO HAR_NEURAL_PROJECT::straddle strategy applied 
 [ 2018-11-30 10:09:24 ] INFO HAR_NEURAL_PROJECT::calculates strategy performance 
+[ 2018-12-05 16:31:36 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-12-05 16:31:36 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-12-05 16:31:37 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-12-05 16:31:37 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-12-05 16:31:37 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-12-05 16:31:37 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-12-05 16:31:37 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-12-05 16:31:38 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-12-05 16:31:38 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-12-05 16:32:01 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-05 16:33:58 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
