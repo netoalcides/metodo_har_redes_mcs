@@ -828,3 +828,27 @@
 [ 2018-12-05 19:40:41 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
 [ 2018-12-05 19:40:41 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
 [ 2018-12-05 19:41:18 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-06 11:19:04 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-12-06 11:19:04 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-12-06 11:19:05 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-12-06 11:19:06 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-12-06 11:23:45 ] INFO HAR_NEURAL_PROJECT::train and predict classic HAR model - fixed window 
+[ 2018-12-06 11:23:45 ] INFO HAR_NEURAL_PROJECT::train Har classic - fixed window 
+[ 2018-12-06 11:24:09 ] INFO HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed window 
+[ 2018-12-06 11:24:09 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-06 11:24:09 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-06 11:24:42 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-06 11:25:22 ] INFO HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed window 
+[ 2018-12-06 11:25:22 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-06 11:25:22 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-06 11:26:16 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-06 16:47:20 ] INFO HAR_NEURAL_PROJECT::train and predict stepwise NNHAR model - fixed window 
+[ 2018-12-06 16:47:20 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-06 16:47:20 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-06 16:48:20 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-06 16:48:31 ] INFO HAR_NEURAL_PROJECT::average partial effects - fixed window 

@@ -64,4 +64,12 @@ reltol_ = runif(min = 0.000000001, max = 0.00000009, n = number_tunning_run)
 
 
 
+info( logger, "HAR_NEURAL_PROJECT::Block bootstrap parameters" )
+
+B <- 200
+
+block_size <- ceiling(T_training^(1/3))
+
+set.seed(12345)
+endpoint <- sample(block_size:T_training, size =  B )  
 

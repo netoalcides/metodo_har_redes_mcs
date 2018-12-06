@@ -68,6 +68,7 @@ best <- model_tunning %>%
 
 
 info( logger, "HAR_NEURAL_PROJECT::train best model - fixed window" )
+
 set.seed(12345)
 fixed_window_nnhar_original_model <- nnet( log_rv252~., 
                data = neural_data_train, 
@@ -79,6 +80,53 @@ fixed_window_nnhar_original_model <- nnet( log_rv252~.,
                abstol = best$abstol,
                reltol = best$reltol )
 
+
+
+info( logger, "HAR_NEURAL_PROJECT::average partial effects - fixed window" )
+
+neural_data_train <- har_original_data_structure_train %>% 
+  mutate( log_rv252 = log(rv5_252) ) %>% 
+  transmute_at( vars( contains('log_') ), 
+                funs( normalization( x = ., use_sample_parameters = 'no', 
+                                     m = sample_mean, s = sample_std_dev) ) )
+
+set.seed(12345)
+nnhar_original_model <- nnet( log_rv252~., 
+                              data = neural_data_train, 
+                              linout = TRUE,
+                              trace = F,
+                              size = best$size, 
+                              decay = best$decay,
+                              maxit = best$maxit,
+                              abstol = best$abstol,
+                              reltol = best$reltol )
+
+variables <- nnhar_original_model$coefnames
+  
+fixed_window_nnhar_original_model.average_effect <- foreach( b = 1:B, .combine = rbind ) %:% 
+  foreach( v = 1:length(variables), .combine = rbind ) %dopar% {
+  
+  dados <- har_original_data_structure_train %>% 
+    mutate( log_rv252 = log(rv5_252) ) %>% 
+    as.data.frame() %>% 
+    slice( (endpoint[b]-block_size):endpoint[b] )
+  
+  ape_ <- average_partial_effect( variable = variables[v],
+                          model = nnhar_original_model,
+                          data = dados,
+                          model_type = 'log' )
+  
+  data_frame( variavel = variables[v],
+              ape = ape_)
+  
+} 
+
+fixed_window_nnhar_original_model.average_effect %<>% 
+  group_by( variavel ) %>% 
+  summarise( ape_boot = mean(ape),
+             q_5 = stats::quantile( ape, 0.025 ),
+             q_95 = stats::quantile( ape, 0.975 ) ) %>% 
+  mutate( results = paste0( round(ape_boot, 3), " (", round(q_5, 3), ", ", round(q_95, 3), ")") )
 
 
 info( logger, "HAR_NEURAL_PROJECT::forecasting NNHar classic - fixed window" )
@@ -114,9 +162,11 @@ results_forecasts_nnhar_classic_by_horizon.fixed_window <- bind_rows(results_for
   filter( row_number() <= 1 ) %>%
   ungroup()
 
+cache("fixed_window_nnhar_original_model.average_effect")
 cache("results_forecasts_nnhar_classic_by_horizon.fixed_window")
 
 rm( neural_data_train, neural_data_test, model_tunning, best, results_forecasts_nnhar_classic )
+
 
 
 

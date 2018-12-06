@@ -5,6 +5,9 @@ summary(fixed_window_har_stepwise_bic)
 
 summary(fixed_window_har_stepwise_aic)
 
+fixed_window_nnhar_original_model.average_effect
+fixed_window_nnhar_stepwise_model.average_effect
+
 models_predictions %>% 
   filter( model == "har_classic", pred_horizon == "h_5" ) %>% 
   select( date, rv5_252, prediction ) %>% 
