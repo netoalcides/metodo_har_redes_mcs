@@ -168,6 +168,7 @@ results_forecasts_nnhar_stepwise_by_horizon.fixed_window <- bind_rows(results_fo
   filter( row_number() <= 1 ) %>%
   ungroup()
 
+cache("fixed_window_nnhar_stepwise_model.average_effect")
 cache("results_forecasts_nnhar_stepwise_by_horizon.fixed_window")
 
 rm( neural_data_train, neural_data_test, model_tunning, best, results_forecasts_nnhar_stepwise )
