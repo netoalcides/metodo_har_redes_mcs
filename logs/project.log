@@ -865,3 +865,13 @@
 [ 2018-12-06 21:40:06 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
 [ 2018-12-06 21:40:45 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
 [ 2018-12-06 21:40:45 ] INFO HAR_NEURAL_PROJECT::average partial effects - fixed window 
+[ 2018-12-15 19:12:41 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-12-15 19:12:42 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-12-15 19:12:42 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-12-15 19:12:44 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-12-15 19:12:44 ] INFO HAR_NEURAL_PROJECT::Block bootstrap parameters 

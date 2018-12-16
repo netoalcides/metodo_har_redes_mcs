@@ -44,3 +44,13 @@ bvsp_rv5 %>%
 bvsp_rv5 %>% 
   summarise( sd_sigma = sd(sigma),
              sd_sd_rv5 = sd(sd_rv5) )
+
+
+
+
+
+
+
+
+
+
