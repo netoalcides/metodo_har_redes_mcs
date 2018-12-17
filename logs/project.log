@@ -875,3 +875,41 @@
 [ 2018-12-15 19:12:43 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
 [ 2018-12-15 19:12:44 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
 [ 2018-12-15 19:12:44 ] INFO HAR_NEURAL_PROJECT::Block bootstrap parameters 
+[ 2018-12-16 11:41:13 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-12-16 11:41:14 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-12-16 11:41:15 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-12-16 11:41:16 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-12-16 11:41:16 ] INFO HAR_NEURAL_PROJECT::Block bootstrap parameters 
+[ 2018-12-16 18:26:43 ] INFO HAR_NEURAL_PROJECT::Processamento 
+[ 2018-12-16 18:26:43 ] INFO HAR_NEURAL_PROJECT::load_dataset 
+[ 2018-12-16 18:26:44 ] INFO HAR_NEURAL_PROJECT::transform 
+[ 2018-12-16 18:26:44 ] INFO HAR_NEURAL_PROJECT::clean na 
+[ 2018-12-16 18:26:44 ] INFO HAR_NEURAL_PROJECT::window methodology parameters 
+[ 2018-12-16 18:26:44 ] INFO HAR_NEURAL_PROJECT::fixed window 
+[ 2018-12-16 18:26:44 ] INFO HAR_NEURAL_PROJECT::Classic Har lag structure 
+[ 2018-12-16 18:26:45 ] INFO HAR_NEURAL_PROJECT::Har Stepwise lag structure 
+[ 2018-12-16 18:26:45 ] INFO HAR_NEURAL_PROJECT::NNHar parameters 
+[ 2018-12-16 18:26:45 ] INFO HAR_NEURAL_PROJECT::Block bootstrap parameters 
+[ 2018-12-16 18:27:12 ] INFO HAR_NEURAL_PROJECT::train and predict stepwise HAR model - fixed window 
+[ 2018-12-16 18:27:12 ] INFO HAR_NEURAL_PROJECT::train AIC and BIC models - fixed window 
+[ 2018-12-16 19:34:13 ] INFO HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed window 
+[ 2018-12-16 19:34:13 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-16 19:39:56 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-16 19:42:15 ] INFO HAR_NEURAL_PROJECT::train and predict stepwise NNHAR model - fixed window 
+[ 2018-12-16 19:42:15 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-16 19:42:16 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-16 19:43:26 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-16 20:09:29 ] INFO HAR_NEURAL_PROJECT::train and predict classic NNHAR model - fixed window 
+[ 2018-12-16 20:09:29 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-16 20:09:29 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-16 20:10:45 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-16 20:13:03 ] INFO HAR_NEURAL_PROJECT::train and predict stepwise BNNHAR model - fixed window 
+[ 2018-12-16 20:13:03 ] INFO HAR_NEURAL_PROJECT::normalize data - fixed window 
+[ 2018-12-16 20:13:03 ] INFO HAR_NEURAL_PROJECT::set tunning parameters - fixed window 
+[ 2018-12-16 20:40:35 ] INFO HAR_NEURAL_PROJECT::train best model - fixed window 
+[ 2018-12-16 20:40:44 ] INFO HAR_NEURAL_PROJECT::average partial effects - fixed window 

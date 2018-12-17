@@ -8,10 +8,18 @@ har_original_data_structure %>%
   mutate( logrv5 = log(rv5_252) ) %>%
   rename( rv5 = rv5_252) %>% 
   summarise_at( vars(rv5, logrv5),
-                funs( mean, sd, skewness, kurtosis, min, max ) ) %>% 
+                funs( mean, median, var, sd, skewness, kurtosis, min, max ) ) %>% 
   gather( key = stat, value = val ) %>% 
   separate( stat, into = c("var", "stat"), sep = "_" ) %>% 
   spread( key = var, value = val)
+
+
+
+Box.test( har_original_data_structure$rv5_252, type = 'Ljung-Box', lag = 10 )
+Box.test( log(har_original_data_structure$rv5_252), type = 'Ljung-Box', lag = 10 )
+
+tseries::jarque.bera.test( har_original_data_structure$rv5_252 )
+tseries::jarque.bera.test( log(har_original_data_structure$rv5_252) )
 
 
 

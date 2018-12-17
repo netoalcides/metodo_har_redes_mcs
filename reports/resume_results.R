@@ -1,14 +1,31 @@
 
 summary(fixed_window_har_original_model)
+lmtest::coeftest( fixed_window_har_original_model, 
+                  vcov. = NeweyWest(fixed_window_har_original_model, lag = 5) )
+
 
 summary(fixed_window_har_stepwise_bic)
+lmtest::coeftest( fixed_window_har_stepwise_bic, 
+                  vcov. = NeweyWest(fixed_window_har_stepwise_bic, lag = 5) )
 
 summary(fixed_window_har_stepwise_aic)
+lmtest::coeftest( fixed_window_har_stepwise_aic, 
+                  vcov. = NeweyWest(fixed_window_har_stepwise_aic, lag = 5) )
+
+
+list.files( "./cache", pattern = 'average_effect.RData', full.names = TRUE ) %>% 
+  lapply(., load, .GlobalEnv )
+
 
 fixed_window_nnhar_original_model.average_effect
-fixed_window_nnhar_stepwise_model.average_effect
+
+fixed_window_nnhar_stepwise_model.average_effect %>% 
+  write_csv(., 'xx.csv')
+
 fixed_window_bnnhar_original_model.average_effect
-fixed_window_bnnhar_stepwise_model.average_effect
+
+fixed_window_bnnhar_stepwise_model.average_effect %>% 
+  write_csv(., 'xx.csv')
 
 
 
