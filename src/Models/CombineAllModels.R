@@ -54,11 +54,13 @@ combinations_forecast <- foreach( horizons = horizons_test$pred_horizon, .combin
                 rv5_252 = combinations_models$rv5_252,
                 prediction = average,
                 pred_horizon = horizons,
-                model = paste( names, collapse = "+"))
+                model = paste( names, collapse = "+"),
+                n_models = length(names) )
     
   }
 
-models_predictions %<>% 
+models_predictions %<>%
+  mutate( n_models = 1 ) %>% 
   bind_rows(., combinations_forecast )
 
 models_test <- models_predictions %>% 

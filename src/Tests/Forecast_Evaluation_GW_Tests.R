@@ -26,7 +26,9 @@ giacomini_white_tests <- foreach( horizons = horizons_test$pred_horizon, .combin
                                 alternative = "two.sided")
     
     data_frame( model_1 = compare_models[1, compare],
+                model_1_n = f_1$n_models[1],
                 model_2 = compare_models[2, compare],
+                model_2_n = f_2$n_models[1],
                 pred_horizon = horizons,
                 gw_test = paste0( round(giacomini_white$statistic, 3), 
                                   '(', round(giacomini_white$p.value, 3), ')' ),
