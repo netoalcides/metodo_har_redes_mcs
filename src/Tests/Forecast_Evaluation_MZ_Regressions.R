@@ -21,3 +21,8 @@ models_mzreg <- foreach( horizons = horizons_test$pred_horizon, .combine = rbind
                 r2 = round(regression$r.squared, 4) )
     
   }
+
+models_mzreg %<>% 
+  left_join(., models_id,
+            by = 'model' ) %>% 
+  arrange( id_model )

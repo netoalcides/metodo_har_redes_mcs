@@ -8,3 +8,7 @@ models_loss <- models_predictions %>%
              qlike = qlike(pred = prediction, real = rv5_252 ),
              le = le(pred = prediction, real = rv5_252 ) ) %>% 
   ungroup
+
+models_loss %<>% 
+  left_join(., models_id,
+            by = 'model' )

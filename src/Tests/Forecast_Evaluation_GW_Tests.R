@@ -25,13 +25,25 @@ giacomini_white_tests <- foreach( horizons = horizons_test$pred_horizon, .combin
                                 method = "NeweyWest", 
                                 alternative = "two.sided")
     
+    model_1_id <- models_id %>% 
+      filter( model == compare_models[1, compare] )
+    
+    model_2_id <- models_id %>% 
+      filter( model == compare_models[2, compare] )
+    
     data_frame( model_1 = compare_models[1, compare],
+                id_model_1 = model_1_id$id_model,
                 model_1_n = f_1$n_models[1],
                 model_2 = compare_models[2, compare],
+                id_model_2 = model_2_id$id_model,
                 model_2_n = f_2$n_models[1],
                 pred_horizon = horizons,
                 gw_test = paste0( round(giacomini_white$statistic, 3), 
                                   '(', round(giacomini_white$p.value, 3), ')' ),
                 result = ifelse( giacomini_white$statistic > 0, 'best_model_2', 'best_model_1'),
-                sig = ifelse( giacomini_white$p.value < 0.05, 'sig.', 'no_sig.') )
+                sig = ifelse( giacomini_white$p.value < 0.01, 'sig_1%', 
+                              ifelse( giacomini_white$p.value >= 0.01 & giacomini_white$p.value < 0.05, 'sig_5%', 
+                                      ifelse( giacomini_white$p.value >= 0.05 & giacomini_white$p.value < 0.1, 'sig_10%', 'no_sig' ) ) ) )
   }
+
+cache( 'giacomini_white_tests' )

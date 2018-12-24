@@ -65,3 +65,7 @@ models_predictions %<>%
 
 models_test <- models_predictions %>% 
   distinct( model )
+
+models_id <- models_predictions %>% 
+  distinct( model ) %>% 
+  mutate( id_model = row_number() )
