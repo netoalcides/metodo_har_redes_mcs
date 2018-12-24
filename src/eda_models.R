@@ -1,6 +1,6 @@
 # loss individual
 
-models_loss %>% 
+models_loss_individual <- models_loss %>% 
   mutate( id = paste0(id_model, pred_horizon) ) %>% 
   left_join(., models_mzreg %>% 
               mutate( id = paste0(id_model, pred_horizon) ) %>% 
@@ -10,9 +10,32 @@ models_loss %>%
   mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+'))  ) %>% 
   arrange( h, id_model ) %>% 
   select( id_model, model, h, rmse, mae, haae, qlike, le, r2 ) %>% 
+  group_by( h ) %>% 
+  mutate( rmse_p = rank(rmse),
+          mae_p = rank(mae),
+          haae_p = rank(haae),
+          qlike_p = rank(qlike),
+          le_p = rank(le),
+          r2_p = rank(1-r2),
+          score = rank(rmse) + rank(mae) + 
+            rank(haae) + rank(le) + rank(qlike) + 
+            rank(1-r2),
+          score_p = rank(score) )
+
+
+models_loss_individual %>% 
+  mutate( rmse = paste0(round(rmse*100,3), '(', rmse_p, ')' ),
+          mae = paste0(round(mae*100,4), '(', mae_p, ')' ),
+          haae = paste0(round(haae,4), '(', haae_p, ')' ),
+          qlike = paste0(round(qlike,4), '(', qlike_p, ')' ),
+          le = paste0(round(le,4), '(', le_p, ')' ),
+          r2 = paste0(round(r2,4), '(', r2_p, ')' ),
+          score = paste0(score, '(', score_p, ')' ) ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>% 
   print( n = Inf )
 
 
+load( file = 'cache/giacomini_white_tests.RData' )
 giacomini_white_tests %>% 
   filter( model_1_n == 1, 
           model_2_n == 1,
@@ -24,23 +47,50 @@ models_id
 
 # loss all - criar os scores
 
-best <- models_loss %>% 
+models_loss_todos <- models_loss %>% 
   mutate( id = paste0(id_model, pred_horizon) ) %>% 
   left_join(., models_mzreg %>% 
               mutate( id = paste0(id_model, pred_horizon) ) %>% 
               select( id, r2),
             by = 'id' ) %>% 
-  group_by( pred_horizon ) %>% 
-  mutate( perc = cut( mae, 
-                      breaks = quantile( mae, 
+  mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+'))  ) %>% 
+  arrange( h, id_model ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2 ) %>% 
+  group_by( h ) %>% 
+  mutate( rmse_p = rank(rmse),
+          mae_p = rank(mae),
+          haae_p = rank(haae),
+          qlike_p = rank(qlike),
+          le_p = rank(le),
+          r2_p = rank(1-r2),
+          score = rank(rmse) + rank(mae) + 
+            rank(haae) + rank(le) + rank(qlike) + 
+            rank(1-r2),
+          score_p = rank(score) )
+
+models_loss_todos %>% 
+  mutate( rmse = paste0(round(rmse*100,3), '(', rmse_p, ')' ),
+          mae = paste0(round(mae*100,4), '(', mae_p, ')' ),
+          haae = paste0(round(haae,4), '(', haae_p, ')' ),
+          qlike = paste0(round(qlike,4), '(', qlike_p, ')' ),
+          le = paste0(round(le,4), '(', le_p, ')' ),
+          r2 = paste0(round(r2,4), '(', r2_p, ')' ),
+          score = paste0(score, '(', score_p, ')' ) ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>% 
+  print( n = Inf )
+
+
+
+
+best <- models_loss_todos %>% 
+  group_by( h ) %>% 
+  mutate( perc = cut( score, 
+                      breaks = quantile( score, 
                                          seq( 0, 1, by = 0.05 ) ),
                       include.lowest = TRUE,
                       labels = FALSE ) ) %>% 
-  ungroup() %>% 
-  mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+'))  ) %>% 
   filter( perc == 1 ) %>% 
-  arrange( h, id_model ) %>% 
-  select( id_model, model, pred_horizon, h, n_models, rmse, mae, haae, qlike, le, r2 ) 
+  ungroup()
 
 best %>% 
   print(n=Inf)
@@ -50,7 +100,7 @@ best %>%
   arrange(n)
 
 
-foreach( m = 1:dim(best)[1] ) %do% {
+tests <- foreach( m = 1:dim(best)[1] ) %do% {
   
   b <- best %>% 
     slice(m)
@@ -58,29 +108,26 @@ foreach( m = 1:dim(best)[1] ) %do% {
   m1 <- giacomini_white_tests %>% 
     filter( id_model_1 == b$id_model,
             model_2_n == 1,
-            pred_horizon == b$pred_horizon ) %>% 
+            pred_horizon == paste0('h_', b$h) ) %>% 
     select( model_1, model_2, gw_test ) %>% 
     spread( key = model_2, value = gw_test )
   
   m2 <- giacomini_white_tests %>% 
     filter( id_model_2 == b$id_model,
             model_1_n == 1,
-            pred_horizon == b$pred_horizon ) %>% 
+            pred_horizon == paste0('h_', b$h) ) %>% 
     select( model_1, model_2, gw_test ) %>% 
     spread( key = model_1, value = gw_test )
   
-  list(m1, m2)
+  m1 %<>% 
+    mutate( h = b$h )
+  
+  m2 %<>% 
+    mutate( h = b$h )
+  
+  bind_rows(m1, m2)
   
 }
 
-giacomini_white_tests %>% 
-  filter( id_model_1 == 12,
-          model_2_n == 1,
-          pred_horizon == 'h_1' )
-
-giacomini_white_tests %>% 
-  filter( id_model_2 == 12,
-          model_1_n == 1,
-          pred_horizon == 'h_1' ) %>% 
-  select( model_1, model_2, gw_test ) %>% 
-  spread( key = model_1, value = gw_test )
+bind_rows(tests) %>% 
+  print(n=Inf)
