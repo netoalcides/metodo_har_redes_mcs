@@ -31,17 +31,31 @@ models_loss_individual %>%
           le = paste0(round(le,4), '(', le_p, ')' ),
           r2 = paste0(round(r2,4), '(', r2_p, ')' ),
           score = paste0(score, '(', score_p, ')' ) ) %>% 
-  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>%
+  write_csv(., path = 'xx.csv')
   print( n = Inf )
 
 
+
+
 load( file = 'cache/giacomini_white_tests.RData' )
-giacomini_white_tests %>% 
-  filter( model_1_n == 1, 
-          model_2_n == 1,
-          pred_horizon == 'h_1' ) %>% 
-  select( id_model_1, id_model_2, gw_test ) %>% 
-  spread( key = id_model_1, value = gw_test )
+
+
+tests_individual <- foreach( horizons = horizons_test$pred_horizon, .combine = rbind ) %dopar% {
+  
+  giacomini_white_tests %>% 
+    filter( model_1_n == 1, 
+            model_2_n == 1,
+            pred_horizon == horizons ) %>% 
+    select( id_model_1, id_model_2, gw_test ) %>% 
+    spread( key = id_model_1, value = gw_test ) %>% 
+    mutate( h = as.numeric(str_extract_all( string = horizons, pattern = '(\\d)+')) )
+  
+} 
+
+
+tests_individual %>% 
+  write_csv(., path = 'xx.csv')
   
 models_id
 
@@ -55,7 +69,7 @@ models_loss_todos <- models_loss %>%
             by = 'id' ) %>% 
   mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+'))  ) %>% 
   arrange( h, id_model ) %>% 
-  select( id_model, model, h, rmse, mae, haae, qlike, le, r2 ) %>% 
+  select( id_model, model, n_models, h, rmse, mae, haae, qlike, le, r2 ) %>% 
   group_by( h ) %>% 
   mutate( rmse_p = rank(rmse),
           mae_p = rank(mae),
@@ -69,14 +83,15 @@ models_loss_todos <- models_loss %>%
           score_p = rank(score) )
 
 models_loss_todos %>% 
-  mutate( rmse = paste0(round(rmse*100,3), '(', rmse_p, ')' ),
-          mae = paste0(round(mae*100,4), '(', mae_p, ')' ),
-          haae = paste0(round(haae,4), '(', haae_p, ')' ),
-          qlike = paste0(round(qlike,4), '(', qlike_p, ')' ),
-          le = paste0(round(le,4), '(', le_p, ')' ),
-          r2 = paste0(round(r2,4), '(', r2_p, ')' ),
-          score = paste0(score, '(', score_p, ')' ) ) %>% 
-  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>% 
+  mutate( rmse = paste0(round(rmse*100,3), ' (', rmse_p, ')' ),
+          mae = paste0(round(mae*100,4), ' (', mae_p, ')' ),
+          haae = paste0(round(haae,4), ' (', haae_p, ')' ),
+          qlike = paste0(round(qlike,4), ' (', qlike_p, ')' ),
+          le = paste0(round(le,4), ' (', le_p, ')' ),
+          r2 = paste0(round(r2,4), ' (', r2_p, ')' ),
+          score = paste0(score, ' (', score_p, ')' ) ) %>% 
+  filter( n_models == 1 ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>%
   print( n = Inf )
 
 
@@ -93,6 +108,15 @@ best <- models_loss_todos %>%
   ungroup()
 
 best %>% 
+  mutate( rmse = paste0(round(rmse*100,3), ' (', rmse_p, ')' ),
+          mae = paste0(round(mae*100,4), ' (', mae_p, ')' ),
+          haae = paste0(round(haae,4), ' (', haae_p, ')' ),
+          qlike = paste0(round(qlike,4), ' (', qlike_p, ')' ),
+          le = paste0(round(le,4), ' (', le_p, ')' ),
+          r2 = paste0(round(r2,4), ' (', r2_p, ')' ),
+          score = paste0(score, ' (', score_p, ')' ) ) %>% 
+  select( id_model, model, h, rmse, mae, haae, qlike, le, r2, score ) %>% 
+  write_csv(., path = 'xx.csv')
   print(n=Inf)
 
 best %>% 
@@ -130,4 +154,5 @@ tests <- foreach( m = 1:dim(best)[1] ) %do% {
 }
 
 bind_rows(tests) %>% 
+  write_csv(., path = 'xx.csv')
   print(n=Inf)
