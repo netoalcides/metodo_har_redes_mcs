@@ -154,5 +154,57 @@ tests <- foreach( m = 1:dim(best)[1] ) %do% {
 }
 
 bind_rows(tests) %>% 
+  print(n=Inf)
+
+  
+  
+## trading
+
+trading_todos <- straddle_strategy_results %>% 
+  group_by( pred_horizon ) %>% 
+  mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+')),
+          sharpe_ratio_p = rank(1-sharpe_ratio),
+          sortino_ratio_p = rank(1-sortino_ratio),
+          omega_ratio_p = rank(1-omega_ratio),
+          alpha_ratio_p = rank(1-alpha_ratio),
+          score = sharpe_ratio_p + sortino_ratio_p + omega_ratio_p + alpha_ratio_p,
+          score_p = rank(score) ) %>%
+  ungroup %>% 
+  select( -pred_horizon )
+  
+  
+trading_todos %>% 
+  mutate( sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
+          sortino_ratio = paste0(round(sortino_ratio,3), ' (', sortino_ratio_p, ')' ),
+          omega_ratio = paste0(round(omega_ratio,3), ' (', omega_ratio_p, ')' ),
+          alpha_ratio = paste0(round(alpha_ratio*100,3), ' (', alpha_ratio_p, ')' ),
+          score = paste0(score, ' (', score_p, ')' ) ) %>% 
+  select( model, n_models, h, buy, nothing, sell, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
+  filter( n_models == 1 ) %>% 
+  arrange( h ) %>% 
   write_csv(., path = 'xx.csv')
   print(n=Inf)
+  
+  
+best <- trading_todos %>% 
+  group_by( h ) %>% 
+  mutate( perc = cut( score, 
+                      breaks = quantile( score, 
+                                         seq( 0, 1, by = 0.05 ) ),
+                      include.lowest = TRUE,
+                      labels = FALSE ) ) %>% 
+  filter( perc == 1 ) %>% 
+  ungroup()
+
+best %>% 
+  mutate( sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
+          sortino_ratio = paste0(round(sortino_ratio,3), ' (', sortino_ratio_p, ')' ),
+          omega_ratio = paste0(round(omega_ratio,3), ' (', omega_ratio_p, ')' ),
+          alpha_ratio = paste0(round(alpha_ratio*100,3), ' (', alpha_ratio_p, ')' ),
+          score = paste0(score, ' (', score_p, ')' ) ) %>% 
+  select( model, h, buy, nothing, sell, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
+  arrange( h ) %>% 
+  print(n=Inf)
+
+
+

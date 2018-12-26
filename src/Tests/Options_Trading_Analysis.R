@@ -63,7 +63,7 @@ decisions <- straddle_returns %>%
   ungroup()
 
 performance_metrics <- straddle_returns %>% 
-  group_by( model, pred_horizon ) %>% 
+  group_by( model, n_models, pred_horizon ) %>% 
   summarise( sharpe_ratio = mean(returns_options - cdi) / sd(returns_options),
              sortino_ratio = mean(returns_options - cdi) / downside_risk(returns_options),
              omega_ratio =  omega_ratio( return = returns_options, mar = cdi ),
