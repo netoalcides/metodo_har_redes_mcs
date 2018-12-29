@@ -160,26 +160,28 @@ bind_rows(tests) %>%
   
 ## trading
 
-trading_todos <- straddle_strategy_results %>% 
+trading_todos <- performance_metrics %>% 
   group_by( pred_horizon ) %>% 
   mutate( h = as.numeric(str_extract_all( string = pred_horizon, pattern = '(\\d)+')),
+          sign_test_p = rank(1-sign_test),
           sharpe_ratio_p = rank(1-sharpe_ratio),
           sortino_ratio_p = rank(1-sortino_ratio),
           omega_ratio_p = rank(1-omega_ratio),
           alpha_ratio_p = rank(1-alpha_ratio),
-          score = sharpe_ratio_p + sortino_ratio_p + omega_ratio_p + alpha_ratio_p,
+          score = sign_test_p + sharpe_ratio_p + sortino_ratio_p + omega_ratio_p + alpha_ratio_p,
           score_p = rank(score) ) %>%
   ungroup %>% 
   select( -pred_horizon )
   
   
 trading_todos %>% 
-  mutate( sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
+  mutate( sign_ratio = paste0(round(sign_test,3), ' (', sign_test_p, ')' ),
+          sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
           sortino_ratio = paste0(round(sortino_ratio,3), ' (', sortino_ratio_p, ')' ),
           omega_ratio = paste0(round(omega_ratio,3), ' (', omega_ratio_p, ')' ),
           alpha_ratio = paste0(round(alpha_ratio*100,3), ' (', alpha_ratio_p, ')' ),
           score = paste0(score, ' (', score_p, ')' ) ) %>% 
-  select( model, n_models, h, buy, nothing, sell, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
+  select( model, n_models, h, sign_ratio, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
   filter( n_models == 1 ) %>% 
   arrange( h ) %>% 
   write_csv(., path = 'xx.csv')
@@ -197,13 +199,15 @@ best <- trading_todos %>%
   ungroup()
 
 best %>% 
-  mutate( sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
+  mutate( sign_ratio = paste0(round(sign_test,3), ' (', sign_test_p, ')' ),
+          sharpe_ratio = paste0(round(sharpe_ratio*10,3), ' (', sharpe_ratio_p, ')' ),
           sortino_ratio = paste0(round(sortino_ratio,3), ' (', sortino_ratio_p, ')' ),
           omega_ratio = paste0(round(omega_ratio,3), ' (', omega_ratio_p, ')' ),
           alpha_ratio = paste0(round(alpha_ratio*100,3), ' (', alpha_ratio_p, ')' ),
           score = paste0(score, ' (', score_p, ')' ) ) %>% 
-  select( model, h, buy, nothing, sell, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
-  arrange( h ) %>% 
+  select( model, h, h, sign_ratio, sharpe_ratio, sortino_ratio, omega_ratio, alpha_ratio, score) %>% 
+  arrange( h ) %>%
+  write_csv(., path = 'xx.csv')
   print(n=Inf)
 
 

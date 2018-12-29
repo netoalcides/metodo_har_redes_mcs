@@ -63,13 +63,13 @@ decisions <- straddle_returns %>%
   ungroup()
 
 performance_metrics <- straddle_returns %>% 
-  group_by( model, n_models, pred_horizon ) %>% 
-  summarise( sharpe_ratio = mean(returns_options - cdi) / sd(returns_options),
+  group_by( model, n_models, pred_horizon ) %>%
+  mutate( var_real = rv5_252 - lag(rv5_252),
+          var_pred = prediction - lag(rv5_252) ) %>% 
+  na.omit() %>% 
+  summarise( sign_test = sign_hit(var_pred, var_real),
+             sharpe_ratio = mean(returns_options - cdi) / sd(returns_options),
              sortino_ratio = mean(returns_options - cdi) / downside_risk(returns_options),
              omega_ratio =  omega_ratio( return = returns_options, mar = cdi ),
              alpha_ratio = jensen_alpha( portfolio_return = returns_options, market_return = simple_return, rf = cdi) ) %>% 
   ungroup()
-
-straddle_strategy_results <- decisions %>% 
-  bind_cols(., performance_metrics %>% 
-              select( -model, -pred_horizon ) )
